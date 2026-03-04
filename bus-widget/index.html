@@ -1766,12 +1766,20 @@ document.getElementById('lv-modal-overlay').addEventListener('click', function(e
 document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeModal(); });
 
 // Manual touch scroll for modal body - works inside iframes (Lodgify/Vercel)
+// Must preventDefault IMMEDIATELY on first touchmove to stop parent page from stealing vertical scroll
 (function() {
   var body = document.getElementById('lv-modal-body');
   var overlay = document.getElementById('lv-modal-overlay');
   if (!body || !overlay) return;
 
-  var startY, startScrollTop, isDragging, lastY, lastTime, velocity, raf;
+  var startY, startScrollTop, lastY, lastTime, velocity, raf, modalOpen;
+
+  // Track if modal is open
+  modalOpen = false;
+  var origShow = window.showModal;
+  window.showModal = function() { modalOpen = true; origShow.apply(this, arguments); };
+  var origClose = window.closeModal;
+  window.closeModal = function() { modalOpen = false; origClose.apply(this, arguments); };
 
   body.addEventListener('touchstart', function(e) {
     if (raf) { cancelAnimationFrame(raf); raf = null; }
@@ -1780,7 +1788,6 @@ document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeMod
     lastY = t.clientY;
     lastTime = Date.now();
     startScrollTop = body.scrollTop;
-    isDragging = false;
     velocity = 0;
   }, {passive: true});
 
@@ -1789,41 +1796,48 @@ document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeMod
     var t = e.touches[0];
     var dy = startY - t.clientY;
 
-    // Start dragging after 5px threshold (so taps still work)
-    if (!isDragging && Math.abs(dy) > 5) isDragging = true;
+    // ALWAYS preventDefault immediately - this stops the parent Lodgify page
+    // from capturing the vertical scroll before the iframe can handle it
+    e.preventDefault();
+    e.stopPropagation();
 
-    if (isDragging) {
-      body.scrollTop = startScrollTop + dy;
-      // Track velocity for inertia
-      var now = Date.now();
-      var dt = now - lastTime;
-      if (dt > 0) velocity = (lastY - t.clientY) / dt;
-      lastY = t.clientY;
-      lastTime = now;
-      e.preventDefault();
-      e.stopPropagation();
-    }
+    // Manually scroll the modal body
+    body.scrollTop = startScrollTop + dy;
+
+    // Track velocity for inertia
+    var now = Date.now();
+    var dt = now - lastTime;
+    if (dt > 0) velocity = (lastY - t.clientY) / dt;
+    lastY = t.clientY;
+    lastTime = now;
   }, {passive: false});
 
   body.addEventListener('touchend', function() {
-    if (isDragging && Math.abs(velocity) > 0.1) {
-      // Inertia scroll
+    if (startY !== undefined && Math.abs(velocity) > 0.1) {
+      // Inertia scroll for smooth feel
       var v = velocity * 16;
       (function inertia() {
         if (Math.abs(v) < 0.5) return;
         body.scrollTop += v;
-        v *= 0.94;
+        v *= 0.93;
         raf = requestAnimationFrame(inertia);
       })();
     }
     startY = undefined;
-    isDragging = false;
   }, {passive: true});
 
-  // Block all touch scroll on overlay OUTSIDE modal body (prevent page behind from scrolling)
+  // Block ALL touch scroll on the entire overlay when modal is open
   overlay.addEventListener('touchmove', function(e) {
-    if (!body.contains(e.target)) e.preventDefault();
+    e.preventDefault();
   }, {passive: false});
+
+  // Also block touchmove on the modal element itself
+  var modal = overlay.querySelector('.lv-modal');
+  if (modal) {
+    modal.addEventListener('touchmove', function(e) {
+      if (!body.contains(e.target)) e.preventDefault();
+    }, {passive: false});
+  }
 })();
 
 /* ================= SECTION SWITCHING ================= */
