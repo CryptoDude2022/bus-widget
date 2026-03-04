@@ -38,9 +38,9 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 /* ================= SELECTS ROW ================= */
 #lv-menu-row{display:flex;gap:8px;margin-bottom:12px}
 .lv-select{flex:1;padding:10px 32px 10px 12px;border-radius:12px;border:2px solid #e2e8f0;font-size:14px;font-weight:600;background:#fff;color:#1a1a1a;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;min-height:44px;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 6px rgba(0,0,0,.04)}
-.lv-select:focus{outline:none;border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.1),0 2px 8px rgba(0,0,0,.06)}
+.lv-select:focus{outline:none;border-color:rgba(180,50,50,.55);box-shadow:0 0 0 3px rgba(180,50,50,.08),0 2px 8px rgba(0,0,0,.06)}
 .lv-lang{width:58px;flex:0 0 58px;padding:10px 4px;border-radius:12px;border:2px solid #e2e8f0;font-size:13px;font-weight:700;background:#fff;color:#1a1a1a;cursor:pointer;text-align:center;min-height:44px;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 6px rgba(0,0,0,.04)}
-.lv-lang:focus{outline:none;border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.1)}
+.lv-lang:focus{outline:none;border-color:rgba(180,50,50,.55);box-shadow:0 0 0 3px rgba(180,50,50,.08)}
 
 /* ================= SECTION SELECTOR ================= */
 #lv-section-select{width:100%;padding:13px 36px 13px 14px;border-radius:12px;border:2.5px solid #8b1a1a;font-size:15px;font-weight:700;background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#8b1a1a;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'%3E%3Cpath fill='%238b1a1a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;min-height:48px;margin-bottom:14px;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 3px 12px rgba(139,26,26,.1)}
@@ -64,7 +64,7 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-pill:hover{border-color:#94a3b8;transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.08)}
 .lv-pill-next{background:linear-gradient(135deg,#8b1a1a,#a33333);border-color:#8b1a1a;color:#fff;box-shadow:0 3px 12px rgba(139,26,26,.22);animation:glowPulse 3s ease-in-out infinite}
 .lv-pill-line{font-size:10px;font-weight:700;opacity:.7}
-.lv-pill-countdown{font-size:10px;font-weight:700;color:#dc2626;margin-left:2px;animation:pulse-red 1.5s ease-in-out infinite}
+.lv-pill-countdown{font-size:10px;font-weight:700;color:rgba(200,60,60,.7);margin-left:2px;animation:pulse-red 1.5s ease-in-out infinite}
 .lv-pill-next .lv-pill-countdown{color:#fca5a5}
 
 /* Full schedule button */
@@ -81,8 +81,8 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-btn{padding:12px 10px;border-radius:12px;text-align:center;text-decoration:none;font-weight:600;font-size:12px;border:none;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:5px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;cursor:pointer;user-select:none;box-shadow:0 2px 6px rgba(0,0,0,.1)}
 .lv-btn-primary{background:linear-gradient(135deg,#8b1a1a,#a33333);color:#fff}
 .lv-btn-primary:hover{background:linear-gradient(135deg,#701616,#8b1a1a);box-shadow:0 4px 14px rgba(139,26,26,.22);transform:translateY(-1px)}
-.lv-btn-secondary{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff}
-.lv-btn-secondary:hover{background:linear-gradient(135deg,#b91c1c,#dc2626);box-shadow:0 4px 14px rgba(220,38,38,.22);transform:translateY(-1px)}
+.lv-btn-secondary{background:linear-gradient(135deg,rgba(180,50,50,.7),rgba(210,70,70,.65));color:#fff}
+.lv-btn-secondary:hover{background:linear-gradient(135deg,rgba(160,40,40,.75),rgba(180,50,50,.7));box-shadow:0 4px 14px rgba(180,50,50,.18);transform:translateY(-1px)}
 .lv-btn:active{transform:scale(.97) translateY(0);box-shadow:0 1px 3px rgba(0,0,0,.1)}
 
 /* Prices card */
@@ -93,6 +93,31 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-price-item:hover{border-color:#86efac;box-shadow:0 2px 8px rgba(34,197,94,.1)}
 .lv-price-label{font-size:11px;color:#374151;font-weight:500}
 .lv-price-value{font-size:13px;font-weight:700;color:#166534}
+
+/* Train/Taxi description text */
+.lv-service-desc{font-size:12px;color:#64748b;line-height:1.5;margin-bottom:10px;padding:8px 10px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0}
+.lv-taxi-fares{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#475569;padding:8px 10px;background:linear-gradient(135deg,#fef2f2,#fde8e8);border-radius:8px;border:1px solid rgba(252,165,165,.3);margin-bottom:10px}
+
+/* Accordion */
+.lv-accordion-toggle{cursor:pointer;user-select:none;transition:all .2s;justify-content:flex-start}
+.lv-accordion-toggle:hover{opacity:.75}
+.lv-accordion-arrow{margin-left:auto;font-size:11px;transition:transform .3s;color:#94a3b8}
+.lv-accordion-toggle.collapsed .lv-accordion-arrow{transform:rotate(-90deg)}
+.lv-accordion-content{max-height:2000px;overflow:hidden;transition:max-height .4s ease-out}
+.lv-accordion-content.collapsed{max-height:0}
+
+/* Highlighted accordion buttons (Taxi & Trains) */
+.lv-accordion-highlight{background:linear-gradient(135deg,#fff,#f8fafc);border:2.5px solid #8b1a1a;border-radius:14px;padding:16px 18px;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:700;color:#8b1a1a;letter-spacing:0;text-transform:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:52px}
+.lv-accordion-highlight .lv-section-label-icon{font-size:22px}
+.lv-accordion-highlight .lv-accordion-arrow{font-size:14px;margin-left:6px;color:inherit;opacity:.6}
+.lv-accordion-highlight:hover{opacity:1;background:linear-gradient(135deg,#fef2f2,#fee2e2);box-shadow:0 6px 20px rgba(139,26,26,.15);transform:translateY(-2px)}
+.lv-accordion-highlight:active{transform:scale(.97);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.lv-accordion-highlight.lv-taxi-toggle{border-color:#166534;color:#166534;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);box-shadow:0 4px 14px rgba(22,101,52,.12)}
+.lv-accordion-highlight.lv-taxi-toggle .lv-accordion-arrow{color:#166534}
+.lv-accordion-highlight.lv-taxi-toggle:hover{background:linear-gradient(135deg,#dcfce7,#d1fae5);box-shadow:0 6px 20px rgba(22,101,52,.2);transform:translateY(-2px)}
+.lv-accordion-highlight.lv-train-toggle{border-color:#1565c0;color:#1565c0;background:linear-gradient(135deg,#e3f2fd,#e1f0fd);box-shadow:0 4px 14px rgba(21,101,192,.12)}
+.lv-accordion-highlight.lv-train-toggle .lv-accordion-arrow{color:#1565c0}
+.lv-accordion-highlight.lv-train-toggle:hover{background:linear-gradient(135deg,#bbdefb,#b3d9f7);box-shadow:0 6px 20px rgba(21,101,192,.2);transform:translateY(-2px)}
 
 /* ================= LOCAL GUIDE SECTION ================= */
 .lv-section-label{font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px;padding-left:2px}
@@ -118,9 +143,9 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-restaurant-card:nth-child(5){animation-delay:.25s}
 .lv-restaurant-card:nth-child(6){animation-delay:.3s}
 .lv-restaurant-card:nth-child(7){animation-delay:.35s}
-.lv-restaurant-card:hover{border-color:#ef4444;background:linear-gradient(135deg,#ef4444,#f87171);box-shadow:0 8px 28px rgba(239,68,68,.3);transform:translateY(-2px)}
+.lv-restaurant-card:hover{border-color:rgba(210,70,70,.5);background:linear-gradient(135deg,rgba(210,70,70,.65),rgba(230,100,100,.6));box-shadow:0 8px 28px rgba(210,70,70,.2);transform:translateY(-2px)}
 .lv-restaurant-card:hover *{color:#fff!important}
-@media(hover:none){.lv-restaurant-card:active{border-color:#ef4444;background:linear-gradient(135deg,#ef4444,#f87171);transform:translateY(0)}.lv-restaurant-card:active *{color:#fff!important}}
+@media(hover:none){.lv-restaurant-card:active{border-color:rgba(210,70,70,.5);background:linear-gradient(135deg,rgba(210,70,70,.65),rgba(230,100,100,.6));transform:translateY(0)}.lv-restaurant-card:active *{color:#fff!important}}
 .lv-restaurant-icon{font-size:22px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;border-radius:12px;flex-shrink:0;border:1.5px solid #e5e7eb}
 .lv-restaurant-info{flex:1;min-width:0}
 .lv-restaurant-name{font-size:13px;font-weight:600;color:#1f2937;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -129,7 +154,7 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-status{font-size:9px;font-weight:700;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
 .lv-status-open{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
 .lv-status-closing{background:#fef3c7;color:#b45309;border:1px solid #fde68a;animation:pulse-warn 2s infinite}
-.lv-status-closed{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.lv-status-closed{background:rgba(254,242,242,.7);color:rgba(160,40,40,.7);border:1px solid rgba(252,165,165,.5)}
 
 /* Shopping card */
 .lv-shopping-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
@@ -148,7 +173,7 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-shopping-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .lv-shopping-distance{font-size:11px;color:#888;font-weight:500}
 .lv-type-badge{font-size:9px;font-weight:700;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
-.lv-type-outlet{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.lv-type-outlet{background:rgba(254,242,242,.7);color:rgba(180,50,50,.7);border:1px solid rgba(252,165,165,.5)}
 .lv-type-mall{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
 .lv-transport-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:3px 7px;border-radius:6px;background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
 .lv-transport-badge.lv-train{background:#fff3e0;color:#e65100;border-color:#ffe0b2}
@@ -156,22 +181,22 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 
 /* ================= AIRPORT SECTION ================= */
 .lv-airport-sub-label{font-size:12px;font-weight:600;color:#64748b;margin-bottom:6px;padding-left:2px}
-.lv-airport-info-row{display:flex;align-items:center;gap:12px;margin:10px 0;padding:10px 12px;background:linear-gradient(135deg,#f0f4ff,#e8eeff);border-radius:10px;border:1.5px solid #dbeafe}
-.lv-airport-price{font-size:15px;font-weight:700;color:#1e3a5f}
+.lv-airport-info-row{display:flex;align-items:center;gap:12px;margin:10px 0;padding:10px 12px;background:linear-gradient(135deg,#fef2f2,#fde8e8);border-radius:10px;border:1.5px solid rgba(252,165,165,.4)}
+.lv-airport-price{font-size:15px;font-weight:700;color:#8b1a1a}
 .lv-airport-price-sub{font-size:12px;font-weight:500;color:#64748b}
 .lv-airport-duration{font-size:13px;font-weight:600;color:#475569}
 
 /* ================= MODAL ================= */
 .lv-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:rgba(0,0,0,.65);display:flex;align-items:flex-end;justify-content:center;z-index:99999;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .lv-modal-overlay.active{opacity:1;visibility:visible}
-.lv-modal{background:#fff;border-radius:20px 20px 0 0;max-width:100%;width:100%;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:0 -12px 48px rgba(0,0,0,.25);transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);position:relative;will-change:transform}
+.lv-modal{background:#fff;border-radius:20px 20px 0 0;max-width:100%;width:100%;max-height:85vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;box-shadow:0 -12px 48px rgba(0,0,0,.25);transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);position:relative;will-change:transform}
 .lv-modal::-webkit-scrollbar{width:4px}
 .lv-modal::-webkit-scrollbar-track{background:transparent}
 .lv-modal::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px}
 .lv-modal-overlay.active .lv-modal{transform:translateY(0)}
 .lv-modal-handle{width:40px;height:5px;background:#d1d5db;border-radius:3px;margin:10px auto 0}
 .lv-modal-header{padding:16px 18px;border-bottom:1.5px solid #f1f5f9;display:flex;align-items:center;gap:12px}
-.lv-modal-icon{font-size:26px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f4ff,#dbeafe);border-radius:14px;border:1.5px solid #bfdbfe}
+.lv-modal-icon{font-size:26px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fef2f2,#fde8e8);border-radius:14px;border:1.5px solid rgba(252,165,165,.5)}
 .lv-modal-title-wrap{flex:1}
 .lv-modal-title{font-size:16px;font-weight:700;color:#1f2937;margin-bottom:2px}
 .lv-modal-subtitle{font-size:12px;color:#64748b}
@@ -184,25 +209,25 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-modal-btn:active{transform:scale(.97)}
 .lv-modal-btn-secondary{background:#f1f5f9;color:#475569;border:1.5px solid #e2e8f0}
 .lv-modal-btn-secondary:hover{background:#e2e8f0;border-color:#cbd5e1}
-.lv-modal-btn-primary{background:linear-gradient(135deg,#1e3a5f,#2d4a73);color:#fff}
-.lv-modal-btn-primary:hover{box-shadow:0 6px 18px rgba(30,58,95,.3);transform:translateY(-1px)}
+.lv-modal-btn-primary{background:linear-gradient(135deg,#8b1a1a,#a33333);color:#fff}
+.lv-modal-btn-primary:hover{box-shadow:0 6px 18px rgba(139,26,26,.3);transform:translateY(-1px)}
 .lv-modal-btn-primary.outlet{background:linear-gradient(135deg,#e74c3c,#c0392b)}
 .lv-modal-btn-primary.mall{background:linear-gradient(135deg,#8b5cf6,#7c3aed)}
 
 /* Schedule table in modal */
 .lv-schedule-table{width:100%;border-collapse:collapse;font-size:12px}
-.lv-schedule-table th{background:linear-gradient(180deg,#f0f4ff,#e8eeff);color:#1e3a5f;font-weight:700;padding:10px 6px;text-align:left;border-bottom:2px solid #bfdbfe;font-size:11px;text-transform:uppercase;letter-spacing:.5px;position:sticky;top:0;z-index:1}
+.lv-schedule-table th{background:linear-gradient(180deg,#fef2f2,#fde8e8);color:#8b1a1a;font-weight:700;padding:10px 6px;text-align:left;border-bottom:2px solid rgba(252,165,165,.5);font-size:11px;text-transform:uppercase;letter-spacing:.5px;position:sticky;top:0;z-index:1}
 .lv-schedule-table td{padding:7px 6px;border-bottom:1px solid #f1f5f9;vertical-align:top}
 .lv-schedule-table tr:hover td{background:#f8fafc}
-.lv-hour-cell{font-weight:700;color:#1e3a5f;font-size:13px;width:40px;text-align:center}
+.lv-hour-cell{font-weight:700;color:#8b1a1a;font-size:13px;width:40px;text-align:center}
 .lv-times-cell{display:flex;flex-wrap:wrap;gap:4px}
 .lv-time-chip{padding:4px 8px;border-radius:6px;background:#f8fafc;border:1.5px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155;transition:all .15s}
 .lv-time-chip.past{opacity:.35}
-.lv-time-chip.next{background:linear-gradient(135deg,#1e3a5f,#2d4a73);color:#fff;border-color:#1e3a5f;box-shadow:0 2px 6px rgba(30,58,95,.25)}
+.lv-time-chip.next{background:linear-gradient(135deg,#8b1a1a,#a33333);color:#fff;border-color:#8b1a1a;box-shadow:0 2px 6px rgba(139,26,26,.25)}
 .lv-schedule-day-tabs{display:flex;gap:5px;margin-bottom:14px}
 .lv-day-tab{flex:1;padding:9px 4px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;color:#64748b;font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.lv-day-tab.active{background:linear-gradient(135deg,#1e3a5f,#2d4a73);border-color:#1e3a5f;color:#fff;box-shadow:0 3px 10px rgba(30,58,95,.25)}
-.lv-day-tab:hover:not(.active){background:#f0f4ff;border-color:#94a3b8}
+.lv-day-tab.active{background:linear-gradient(135deg,#8b1a1a,#a33333);border-color:#8b1a1a;color:#fff;box-shadow:0 3px 10px rgba(139,26,26,.25)}
+.lv-day-tab:hover:not(.active){background:#fef2f2;border-color:#d4a0a0}
 
 /* Transport options in modal */
 .lv-transport-option{background:#f8f9fa;border-radius:12px;padding:14px;margin-bottom:10px;border:1.5px solid #e8e8e8}
@@ -336,6 +361,48 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
   <!-- ==================== BUS PANEL ==================== -->
   <div id="lv-panel-bus" class="lv-panel active">
 
+    <!-- ==================== TAXI & TRANSFER SECTION (Accordion) ==================== -->
+    <div class="lv-accordion-toggle lv-accordion-highlight lv-taxi-toggle collapsed" onclick="toggleAccordion(this)">
+      <span class="lv-section-label-icon">🚕</span>
+      <span data-i18n="taxiSectionTitle">Taxi & Transfer</span>
+      <span class="lv-accordion-arrow">▾</span>
+    </div>
+    <div class="lv-accordion-content collapsed">
+
+      <!-- Our Private Transfer -->
+      <div class="lv-bus-block" id="lv-private-transfer" style="border-left:4px solid #22c55e;background:linear-gradient(135deg,#f0fdf4,#ecfdf5)">
+        <div class="lv-line-header" style="color:#166534">
+          ⭐ <span data-i18n="privateTransferTitle">Il nostro Transfer Privato</span>
+        </div>
+        <div class="lv-service-desc" data-i18n="privateTransferDesc" style="background:#fff;border-color:#bbf7d0">Servizio transfer privato comodo e puntuale. Contattaci per prenotare il tuo trasferimento.</div>
+        <div class="lv-btn-row">
+          <a class="lv-btn lv-btn-primary" href="tel:+393469537567" style="background:linear-gradient(135deg,#166534,#15803d)">📞 <span data-i18n="privateTransferCall">Chiama ora</span></a>
+          <a class="lv-btn lv-btn-secondary" href="https://wa.me/393469537567" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(135deg,#22c55e,#16a34a)">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Taxi providers -->
+      <div class="lv-bus-block" id="lv-taxi-block">
+        <div class="lv-line-header">
+          <span data-i18n="taxiTitle">Taxi Mestre e Venezia</span>
+        </div>
+        <div class="lv-service-desc" data-i18n="taxiDesc">Servizi taxi affidabili disponibili 24h a Mestre e Venezia.</div>
+        <div class="lv-taxi-fares" id="lv-taxi-fares">
+          <span data-i18n="taxiToVenice">Per Venezia (Piazzale Roma): ~€40</span>
+          <span data-i18n="taxiToAirport">Per Aeroporto Marco Polo: ~€40</span>
+        </div>
+        <div class="lv-btn-row">
+          <a class="lv-btn lv-btn-primary" href="tel:+390415222303">📞 Radiotaxi 041 5222303</a>
+          <a class="lv-btn lv-btn-secondary" href="tel:+390415265775">📞 Coop. Taxi 041 5265775</a>
+        </div>
+        <div class="lv-btn-row" style="margin-top:6px">
+          <a class="lv-btn lv-btn-primary" href="tel:+39041936222">📞 Marco Polo Taxi 041 936222</a>
+          <a class="lv-btn lv-btn-secondary" href="https://www.itaxi.com" target="_blank" rel="noopener noreferrer">🚕 <span data-i18n="taxiBookOnline">Prenota online</span></a>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Outbound -->
     <div class="lv-bus-block">
       <div class="lv-bus-block-header">
@@ -364,6 +431,41 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
       <button class="lv-full-schedule-btn" onclick="openScheduleModal('return')">
         📋 <span data-i18n="viewFullSchedule">Vedi orari completi</span>
       </button>
+    </div>
+
+    <!-- ==================== TRAINS SECTION (Accordion) ==================== -->
+    <div class="lv-accordion-toggle lv-accordion-highlight lv-train-toggle collapsed" onclick="toggleAccordion(this)">
+      <span class="lv-section-label-icon">🚆</span>
+      <span data-i18n="trainSectionTitle">Treni per Venezia</span>
+      <span class="lv-accordion-arrow">▾</span>
+    </div>
+    <div class="lv-accordion-content collapsed">
+
+      <!-- Trenitalia -->
+      <div class="lv-bus-block">
+        <div class="lv-line-header">
+          <span data-i18n="trenitaliaTitle">Trenitalia – Mestre → Venezia S. Lucia</span>
+        </div>
+        <div class="lv-service-desc" data-i18n="trenitaliaDesc">Treni regionali ogni 10-20 min. Stazione Venezia Mestre.</div>
+        <div class="lv-btn-row">
+          <a class="lv-btn lv-btn-primary" href="https://maps.google.com/?q=Stazione+Venezia+Mestre" target="_blank" rel="noopener noreferrer">📍 <span data-i18n="trainStation">Stazione</span></a>
+          <a class="lv-btn lv-btn-secondary" href="https://www.trenitalia.com" target="_blank" rel="noopener noreferrer">🎫 <span data-i18n="trenitaliaBuy">Trenitalia</span></a>
+        </div>
+      </div>
+
+      <!-- Italo -->
+      <div class="lv-bus-block">
+        <div class="lv-line-header">
+          <span data-i18n="italoTitle">Italo – Alta Velocità da Mestre</span>
+        </div>
+        <div class="lv-service-desc" data-i18n="italoDesc">Treni alta velocità per Roma, Milano, Firenze, Napoli e altre città. Partenza da Venezia Mestre.</div>
+        <div class="lv-airport-info-row"><span data-i18n="italoPrice">da €9.90</span></div>
+        <div class="lv-btn-row">
+          <a class="lv-btn lv-btn-primary" href="https://maps.google.com/?q=Stazione+Venezia+Mestre" target="_blank" rel="noopener noreferrer">📍 <span data-i18n="trainStation">Stazione</span></a>
+          <a class="lv-btn lv-btn-secondary" href="https://www.italotreno.it" target="_blank" rel="noopener noreferrer">🎫 <span data-i18n="italoBuy">Italo Treno</span></a>
+        </div>
+      </div>
+
     </div>
 
     <!-- Stop + Map -->
@@ -581,11 +683,29 @@ const I18N = {
     pricePass2: "Pass 2 giorni",
     pricePass3: "Pass 3 giorni",
     pricePass7: "Pass 7 giorni",
+    // Treni & Taxi
+    trainSectionTitle: "Treni per Venezia",
+    trenitaliaTitle: "Trenitalia – Mestre → Venezia S. Lucia",
+    trenitaliaDesc: "Treni regionali ogni 10-20 min. Stazione Venezia Mestre.",
+    trainStation: "Stazione",
+    trenitaliaBuy: "Trenitalia",
+    italoTitle: "Italo – Alta Velocità da Mestre",
+    italoDesc: "Treni alta velocità per Roma, Milano, Firenze, Napoli e altre città. Partenza da Venezia Mestre.",
+    italoPrice: "da €9.90",
+    italoBuy: "Italo Treno",
+    taxiSectionTitle: "Taxi & Transfer",
+    taxiTitle: "Taxi Mestre e Venezia",
+    taxiDesc: "Servizi taxi affidabili disponibili 24h a Mestre e Venezia.",
+    taxiToVenice: "Per Venezia (Piazzale Roma): ~€40",
+    taxiToAirport: "Per Aeroporto Marco Polo: ~€40",
+    privateTransferTitle: "Il nostro Transfer Privato",
+    privateTransferDesc: "Servizio transfer privato comodo e puntuale. Contattaci per prenotare il tuo trasferimento.",
+    privateTransferCall: "Chiama ora",
+    taxiBookOnline: "Prenota online",
     viewFullSchedule: "Vedi orari completi",
     fullScheduleTitle: "Orari completi",
-    weekday: "Feriale",
-    saturday: "Sabato",
-    sunday: "Festivo",
+    weekday: "Feriale (Lun-Sab)",
+    sunday: "Festivo (Dom)",
     night: "Notturno",
     hour: "Ora",
     departures: "Partenze",
@@ -649,10 +769,28 @@ const I18N = {
     pricePass2: "2-day pass",
     pricePass3: "3-day pass",
     pricePass7: "7-day pass",
+    // Trains & Taxi
+    trainSectionTitle: "Trains to Venice",
+    trenitaliaTitle: "Trenitalia – Mestre → Venice S. Lucia",
+    trenitaliaDesc: "Regional trains every 10-20 min. Venezia Mestre station.",
+    trainStation: "Station",
+    trenitaliaBuy: "Trenitalia",
+    italoTitle: "Italo – High Speed from Mestre",
+    italoDesc: "High-speed trains to Rome, Milan, Florence, Naples and other cities. Departing from Venezia Mestre.",
+    italoPrice: "from €9.90",
+    italoBuy: "Italo Treno",
+    taxiSectionTitle: "Taxi & Transfer",
+    taxiTitle: "Taxi Mestre & Venice",
+    taxiDesc: "Reliable 24h taxi services in Mestre and Venice.",
+    taxiToVenice: "To Venice (Piazzale Roma): ~€40",
+    taxiToAirport: "To Marco Polo Airport: ~€40",
+    privateTransferTitle: "Our Private Transfer",
+    privateTransferDesc: "Comfortable and punctual private transfer service. Contact us to book your ride.",
+    privateTransferCall: "Call now",
+    taxiBookOnline: "Book online",
     viewFullSchedule: "View full schedule",
     fullScheduleTitle: "Full schedule",
-    weekday: "Weekday",
-    saturday: "Saturday",
+    weekday: "Weekday (Mon-Sat)",
     sunday: "Sunday",
     night: "Night",
     hour: "Hour",
@@ -717,10 +855,27 @@ const I18N = {
     pricePass2: "2-Tages-Pass",
     pricePass3: "3-Tages-Pass",
     pricePass7: "7-Tages-Pass",
+    trainSectionTitle: "Züge nach Venedig",
+    trenitaliaTitle: "Trenitalia – Mestre → Venedig S. Lucia",
+    trenitaliaDesc: "Regionalzüge alle 10-20 Min. Bahnhof Venezia Mestre.",
+    trainStation: "Bahnhof",
+    trenitaliaBuy: "Trenitalia",
+    italoTitle: "Italo – Hochgeschwindigkeit ab Mestre",
+    italoDesc: "Hochgeschwindigkeitszüge nach Rom, Mailand, Florenz, Neapel und andere Städte. Abfahrt Venezia Mestre.",
+    italoPrice: "ab €9.90",
+    italoBuy: "Italo Treno",
+    taxiSectionTitle: "Taxi & Transfer",
+    taxiTitle: "Taxi Mestre & Venedig",
+    taxiDesc: "Zuverlässige Taxidienste 24h in Mestre und Venedig.",
+    taxiToVenice: "Nach Venedig (Piazzale Roma): ~€40",
+    taxiToAirport: "Zum Flughafen Marco Polo: ~€40",
+    privateTransferTitle: "Unser Privater Transfer",
+    privateTransferDesc: "Komfortabler und pünktlicher Privattransfer. Kontaktieren Sie uns für Ihre Buchung.",
+    privateTransferCall: "Jetzt anrufen",
+    taxiBookOnline: "Online buchen",
     viewFullSchedule: "Vollständigen Fahrplan anzeigen",
     fullScheduleTitle: "Vollständiger Fahrplan",
-    weekday: "Werktag",
-    saturday: "Samstag",
+    weekday: "Werktag (Mo-Sa)",
     sunday: "Sonntag",
     night: "Nacht",
     hour: "Stunde",
@@ -785,10 +940,27 @@ const I18N = {
     pricePass2: "Pass 2 días",
     pricePass3: "Pass 3 días",
     pricePass7: "Pass 7 días",
+    trainSectionTitle: "Trenes a Venecia",
+    trenitaliaTitle: "Trenitalia – Mestre → Venecia S. Lucia",
+    trenitaliaDesc: "Trenes regionales cada 10-20 min. Estación Venezia Mestre.",
+    trainStation: "Estación",
+    trenitaliaBuy: "Trenitalia",
+    italoTitle: "Italo – Alta Velocidad desde Mestre",
+    italoDesc: "Trenes de alta velocidad a Roma, Milán, Florencia, Nápoles y otras ciudades. Salida desde Venezia Mestre.",
+    italoPrice: "desde €9.90",
+    italoBuy: "Italo Treno",
+    taxiSectionTitle: "Taxi y Transfer",
+    taxiTitle: "Taxi Mestre y Venecia",
+    taxiDesc: "Servicios de taxi fiables disponibles 24h en Mestre y Venecia.",
+    taxiToVenice: "A Venecia (Piazzale Roma): ~€40",
+    taxiToAirport: "Al Aeropuerto Marco Polo: ~€40",
+    privateTransferTitle: "Nuestro Transfer Privado",
+    privateTransferDesc: "Servicio de transfer privado cómodo y puntual. Contáctanos para reservar tu traslado.",
+    privateTransferCall: "Llama ahora",
+    taxiBookOnline: "Reserva online",
     viewFullSchedule: "Ver horarios completos",
     fullScheduleTitle: "Horarios completos",
-    weekday: "Laborable",
-    saturday: "Sábado",
+    weekday: "Laborable (Lun-Sáb)",
     sunday: "Festivo",
     night: "Nocturno",
     hour: "Hora",
@@ -853,10 +1025,27 @@ const I18N = {
     pricePass2: "Pass 2 jours",
     pricePass3: "Pass 3 jours",
     pricePass7: "Pass 7 jours",
+    trainSectionTitle: "Trains pour Venise",
+    trenitaliaTitle: "Trenitalia – Mestre → Venise S. Lucia",
+    trenitaliaDesc: "Trains régionaux toutes les 10-20 min. Gare Venezia Mestre.",
+    trainStation: "Gare",
+    trenitaliaBuy: "Trenitalia",
+    italoTitle: "Italo – Grande Vitesse depuis Mestre",
+    italoDesc: "Trains à grande vitesse pour Rome, Milan, Florence, Naples et d'autres villes. Départ de Venezia Mestre.",
+    italoPrice: "dès €9.90",
+    italoBuy: "Italo Treno",
+    taxiSectionTitle: "Taxi & Transfert",
+    taxiTitle: "Taxi Mestre & Venise",
+    taxiDesc: "Services de taxi fiables disponibles 24h à Mestre et Venise.",
+    taxiToVenice: "Pour Venise (Piazzale Roma) : ~€40",
+    taxiToAirport: "Pour Aéroport Marco Polo : ~€40",
+    privateTransferTitle: "Notre Transfert Privé",
+    privateTransferDesc: "Service de transfert privé confortable et ponctuel. Contactez-nous pour réserver.",
+    privateTransferCall: "Appeler maintenant",
+    taxiBookOnline: "Réserver en ligne",
     viewFullSchedule: "Voir horaires complets",
     fullScheduleTitle: "Horaires complets",
-    weekday: "Semaine",
-    saturday: "Samedi",
+    weekday: "Semaine (Lun-Sam)",
     sunday: "Dimanche",
     night: "Nuit",
     hour: "Heure",
@@ -896,10 +1085,10 @@ const OUTBOUND_WEEKDAY={"05":["05:02","05:30","05:32","05:47"],"06":["06:00","06
 const OUTBOUND_SATURDAY=OUTBOUND_WEEKDAY;
 const OUTBOUND_SUNDAY={"05":["05:12","05:42"],"06":["06:12","06:42"],"07":["07:12","07:42"],"08":["08:12","08:42"],"09":["09:01","09:12","09:31","09:42"],"10":["10:01","10:12","10:31","10:42"],"11":["11:01","11:12","11:31","11:42"],"12":["12:01","12:12","12:42"],"13":["13:12","13:42"],"14":["14:12","14:42"],"15":["15:12","15:42"],"16":["16:31","16:42"],"17":["17:01","17:12","17:31","17:42"],"18":["18:01","18:12","18:31","18:42"],"19":["19:01","19:12","19:31","19:42"],"20":["20:01","20:12","20:42"],"21":["21:17","21:47"],"22":["22:17","22:47"],"23":["23:17"]};
 
-/* --- Miranese (Dream Studio) - Line 7 outbound --- */
-const MIRANESE_OUTBOUND_WEEKDAY={"06":["06:00","06:20","06:40"],"07":["07:00","07:10","07:20","07:24","07:34","07:40"],"08":["08:00","08:20","08:40"],"09":["09:00","09:10","09:20","09:40"],"10":["10:00","10:20","10:40"],"11":["11:00","11:20","11:40"],"12":["12:00","12:20","12:40"],"13":["13:00","13:20","13:40"],"14":["14:00","14:40"],"15":["15:00","15:20","15:40"],"16":["16:00","16:20","16:40"],"17":["17:00","17:20","17:40"],"18":["18:00","18:20","18:40"],"19":["19:00","19:20","19:40"],"20":["20:00","20:20"]};
+/* --- Miranese Monteverdi (Dream Studio) - Line 7+7E+7L outbound (Giustizia +2min) --- */
+const MIRANESE_OUTBOUND_WEEKDAY={"00":["00:09"],"04":["04:49"],"05":["05:29","05:48","05:58"],"06":["06:08","06:18","06:28","06:38","06:48","06:58"],"07":["07:08","07:18","07:22","07:23","07:26","07:28","07:32","07:37","07:38","07:48","07:58"],"08":["08:02","08:07","08:08","08:17","08:18","08:22","08:28","08:38","08:39","08:48","08:58"],"09":["09:08","09:18","09:28","09:38","09:48","09:58"],"10":["10:08","10:18","10:28","10:38","10:48","10:58"],"11":["11:08","11:18","11:28","11:38","11:48","11:58"],"12":["12:08","12:18","12:28","12:38","12:48","12:58"],"13":["13:08","13:18","13:28","13:38","13:48","13:58"],"14":["14:08","14:18","14:28","14:38","14:48","14:58"],"15":["15:08","15:18","15:28","15:38","15:48","15:58"],"16":["16:08","16:18","16:28","16:38","16:48","16:58"],"17":["17:08","17:18","17:28","17:38","17:48","17:58"],"18":["18:08","18:18","18:28","18:38","18:48","18:58"],"19":["19:08","19:18","19:28","19:38","19:48","19:58"],"20":["20:08","20:18","20:28","20:57"],"21":["21:24","21:54"],"22":["22:24","22:54"],"23":["23:24"]};
 const MIRANESE_OUTBOUND_SATURDAY=MIRANESE_OUTBOUND_WEEKDAY;
-const MIRANESE_OUTBOUND_SUNDAY={"08":["08:14","08:44"],"09":["09:14","09:44"],"10":["10:14","10:44"],"11":["11:14","11:44"],"12":["12:14","12:44"],"13":["13:14","13:44"],"14":["14:14","14:44"],"15":["15:14","15:44"],"16":["16:14","16:44"],"17":["17:14","17:44"],"18":["18:14","18:44"],"19":["19:14","19:44"],"20":["20:14","20:44"]};
+const MIRANESE_OUTBOUND_SUNDAY={"00":["00:09"],"05":["05:29","05:52"],"06":["06:12","06:32","06:52","06:58"],"07":["07:12","07:32","07:48","07:58"],"08":["08:18","08:28","08:48","08:58"],"09":["09:18","09:28","09:48","09:58"],"10":["10:18","10:28","10:48","10:58"],"11":["11:18","11:28","11:48","11:58"],"12":["12:18","12:28","12:48","12:58"],"13":["13:18","13:28","13:48","13:58"],"14":["14:18","14:28","14:48","14:58"],"15":["15:18","15:28","15:48","15:58"],"16":["16:18","16:28","16:48","16:58"],"17":["17:18","17:28","17:48","17:58"],"18":["18:18","18:28","18:48","18:58"],"19":["19:18","19:28","19:48","19:58"],"20":["20:18","20:28","20:57"],"21":["21:24","21:54"],"22":["22:24","22:54"],"23":["23:24"]};
 
 /* --- Vempa (Station) - Line 2 outbound --- */
 const VEMPA_OUTBOUND_WEEKDAY={"05":["05:04","05:33","05:34","05:49"],"06":["06:02","06:14","06:26","06:38","06:50"],"07":["07:02","07:08","07:14","07:20","07:26","07:32","07:38","07:50"],"08":["08:02","08:03","08:14","08:23","08:26","08:35","08:38","08:50"],"09":["09:02","09:13","09:14","09:26","09:38","09:50"],"10":["10:02","10:14","10:26","10:38","10:50"],"11":["11:02","11:14","11:26","11:38","11:50"],"12":["12:02","12:14","12:26","12:38","12:50"],"13":["13:02","13:14","13:26","13:38","13:50"],"14":["14:02","14:14","14:26","14:38","14:50"],"15":["15:02","15:14","15:26","15:38","15:50"],"16":["16:02","16:14","16:26","16:38","16:50"],"17":["17:02","17:14","17:26","17:38","17:50"],"18":["18:02","18:14","18:26","18:38","18:50"],"19":["19:02","19:14","19:26","19:38","19:50"],"20":["20:02","20:14","20:26","20:38","20:50"],"21":["21:02","21:19","21:31","21:50"],"22":["22:08","22:19","22:38","22:49"],"23":["23:08","23:19","23:38","23:49"],"00":["00:08","00:19","00:49"]};
@@ -921,20 +1110,20 @@ const VEMPA_RETURN_WEEKDAY=RETURN_WEEKDAY;
 const VEMPA_RETURN_SATURDAY=RETURN_WEEKDAY;
 const VEMPA_RETURN_SUNDAY={"05":["05:45"],"06":["06:15","06:45"],"07":["07:15","07:45"],"08":["08:15","08:45"],"09":["09:15","09:30","09:45"],"10":["10:00","10:15","10:30","10:45"],"11":["11:00","11:15","11:30","11:45"],"12":["12:15","12:45"],"13":["13:15","13:45"],"14":["14:15","14:45"],"15":["15:15","15:45"],"16":["16:15","16:30","16:45"],"17":["17:00","17:15","17:30","17:45"],"18":["18:00","18:15","18:30","18:45"],"19":["19:00","19:15","19:30","19:45"],"20":["20:00","20:15","20:30","20:45"],"21":["21:00","21:15","21:45"],"22":["22:15","22:45"],"23":["23:15","23:45"],"00":["00:20","00:40"]};
 
-/* --- Vempa Line 7 outbound --- */
-const VEMPA_L7_OUTBOUND_WEEKDAY={"05":["05:20","05:40"],"06":["06:00","06:15","06:30","06:45"],"07":["07:00","07:15","07:30","07:45"],"08":["08:00","08:15","08:30","08:45"],"09":["09:00","09:20","09:40"],"10":["10:00","10:20","10:40"],"11":["11:00","11:20","11:40"],"12":["12:00","12:20","12:40"],"13":["13:00","13:20","13:40"],"14":["14:00","14:20","14:40"],"15":["15:00","15:20","15:40"],"16":["16:00","16:20","16:40"],"17":["17:00","17:20","17:40"],"18":["18:00","18:20","18:40"],"19":["19:00","19:20","19:40"],"20":["20:00","20:30"],"21":["21:00","21:30"],"22":["22:00","22:30"],"23":["23:00"]};
+/* --- Miranese Return (Venice departure times 507 VENEZIA A2, all Line 7+7E+7L) --- */
+const MIRANESE_RETURN_WEEKDAY={"00":["00:05","00:40"],"05":["05:15","05:45"],"06":["06:05","06:30","06:40","06:50"],"07":["07:00","07:10","07:20","07:30","07:40","07:50"],"08":["08:00","08:10","08:20","08:30","08:40","08:50"],"09":["09:00","09:10","09:20","09:30","09:40","09:50"],"10":["10:00","10:10","10:20","10:30","10:40","10:50"],"11":["11:00","11:10","11:20","11:30","11:40","11:50"],"12":["12:00","12:10","12:20","12:30","12:40","12:50"],"13":["13:00","13:10","13:20","13:30","13:40","13:50"],"14":["14:00","14:10","14:20","14:30","14:40","14:50"],"15":["15:00","15:10","15:20","15:30","15:40","15:50"],"16":["16:00","16:10","16:20","16:30","16:40","16:50"],"17":["17:00","17:10","17:15","17:20","17:30","17:40","17:45","17:50"],"18":["18:00","18:10","18:20","18:30","18:40","18:45","18:50"],"19":["19:00","19:10","19:20","19:30","19:40","19:50"],"20":["20:00","20:10","20:20","20:30","20:50"],"21":["21:10","21:35"],"22":["22:05","22:35"],"23":["23:05","23:35"]};
+const MIRANESE_RETURN_SATURDAY=MIRANESE_RETURN_WEEKDAY;
+const MIRANESE_RETURN_SUNDAY={"00":["00:05","00:40"],"05":["05:15"],"06":["06:10","06:30","06:50"],"07":["07:10","07:40","07:55"],"08":["08:10","08:25","08:40","08:55"],"09":["09:10","09:25","09:40","09:55"],"10":["10:10","10:25","10:40","10:55"],"11":["11:10","11:25","11:40","11:55"],"12":["12:10","12:25","12:40","12:55"],"13":["13:10","13:25","13:40","13:55"],"14":["14:10","14:25","14:40","14:55"],"15":["15:10","15:25","15:40","15:55"],"16":["16:10","16:25","16:40","16:55"],"17":["17:10","17:25","17:40","17:55"],"18":["18:10","18:25","18:40","18:55"],"19":["19:10","19:25","19:40","19:55"],"20":["20:10","20:25"],"21":["21:10","21:35"],"22":["22:05","22:35"],"23":["23:05","23:35"]};
+
+/* --- Vempa Line 7+7E+7L outbound (aggregated) --- */
+const VEMPA_L7_OUTBOUND_WEEKDAY={"00":["00:15"],"04":["04:55"],"05":["05:35","05:54"],"06":["06:04","06:14","06:24","06:34","06:44","06:54"],"07":["07:04","07:14","07:24","07:34","07:37","07:42","07:43","07:44","07:54"],"08":["08:04","08:07","08:13","08:14","08:23","08:24","08:27","08:34","08:44","08:54"],"09":["09:04","09:14","09:24","09:34","09:44","09:54"],"10":["10:04","10:14","10:24","10:34","10:44","10:54"],"11":["11:04","11:14","11:24","11:34","11:44","11:54"],"12":["12:04","12:14","12:24","12:34","12:44","12:54"],"13":["13:04","13:14","13:24","13:34","13:44","13:54"],"14":["14:04","14:14","14:24","14:34","14:44","14:54"],"15":["15:04","15:14","15:24","15:34","15:44","15:54"],"16":["16:04","16:14","16:24","16:34","16:44","16:54"],"17":["17:04","17:14","17:24","17:34","17:44","17:54"],"18":["18:04","18:14","18:24","18:34","18:44","18:54"],"19":["19:04","19:14","19:24","19:34","19:44","19:54"],"20":["20:04","20:14","20:24","20:34"],"21":["21:03","21:30"],"22":["22:00","22:30"],"23":["23:00","23:30"]};
 const VEMPA_L7_OUTBOUND_SATURDAY=VEMPA_L7_OUTBOUND_WEEKDAY;
-const VEMPA_L7_OUTBOUND_SUNDAY={"08":["08:00","08:30"],"09":["09:00","09:30"],"10":["10:00","10:30"],"11":["11:00","11:30"],"12":["12:00","12:30"],"13":["13:00","13:30"],"14":["14:00","14:30"],"15":["15:00","15:30"],"16":["16:00","16:30"],"17":["17:00","17:30"],"18":["18:00","18:30"],"19":["19:00","19:30"],"20":["20:00","20:30"]};
+const VEMPA_L7_OUTBOUND_SUNDAY={"00":["00:15"],"05":["05:35","05:58"],"06":["06:18","06:38","06:58"],"07":["07:04","07:18","07:38","07:54"],"08":["08:04","08:24","08:34","08:54"],"09":["09:04","09:24","09:34","09:54"],"10":["10:04","10:24","10:34","10:54"],"11":["11:04","11:24","11:34","11:54"],"12":["12:04","12:24","12:34","12:54"],"13":["13:04","13:24","13:34","13:54"],"14":["14:04","14:24","14:34","14:54"],"15":["15:04","15:24","15:34","15:54"],"16":["16:04","16:24","16:34","16:54"],"17":["17:04","17:24","17:34","17:54"],"18":["18:04","18:24","18:34","18:54"],"19":["19:04","19:24","19:34","19:54"],"20":["20:04","20:24","20:34"],"21":["21:03","21:30"],"22":["22:00","22:30"],"23":["23:00","23:30"]};
 
-/* --- Vempa Line 7 return --- */
-const VEMPA_L7_RETURN_WEEKDAY={"05":["05:30","05:50"],"06":["06:10","06:25","06:40","06:55"],"07":["07:10","07:25","07:40","07:55"],"08":["08:10","08:25","08:40","08:55"],"09":["09:10","09:30","09:50"],"10":["10:10","10:30","10:50"],"11":["11:10","11:30","11:50"],"12":["12:10","12:30","12:50"],"13":["13:10","13:30","13:50"],"14":["14:10","14:30","14:50"],"15":["15:10","15:30","15:50"],"16":["16:10","16:30","16:50"],"17":["17:10","17:30","17:50"],"18":["18:10","18:30","18:50"],"19":["19:10","19:30","19:50"],"20":["20:10","20:40"],"21":["21:10","21:40"],"22":["22:10","22:40"],"23":["23:10"]};
+/* --- Vempa Line 7+7E+7L return (Venice P.le Roma departures) --- */
+const VEMPA_L7_RETURN_WEEKDAY={"00":["00:05","00:40"],"05":["05:15","05:45"],"06":["06:05","06:30","06:40","06:50"],"07":["07:00","07:10","07:20","07:30","07:40","07:50"],"08":["08:00","08:10","08:20","08:30","08:40","08:50"],"09":["09:00","09:10","09:20","09:30","09:40","09:50"],"10":["10:00","10:10","10:20","10:30","10:40","10:50"],"11":["11:00","11:10","11:20","11:30","11:40","11:50"],"12":["12:00","12:10","12:20","12:30","12:40","12:50"],"13":["13:00","13:10","13:20","13:30","13:40","13:50"],"14":["14:00","14:10","14:20","14:30","14:40","14:50"],"15":["15:00","15:10","15:20","15:30","15:40","15:50"],"16":["16:00","16:10","16:20","16:30","16:40","16:50"],"17":["17:00","17:10","17:15","17:20","17:30","17:40","17:45","17:50"],"18":["18:00","18:10","18:20","18:30","18:40","18:45","18:50"],"19":["19:00","19:10","19:20","19:30","19:40","19:50"],"20":["20:00","20:10","20:20","20:30","20:50"],"21":["21:10","21:35"],"22":["22:05","22:35"],"23":["23:05","23:35"]};
 const VEMPA_L7_RETURN_SATURDAY=VEMPA_L7_RETURN_WEEKDAY;
-const VEMPA_L7_RETURN_SUNDAY={"08":["08:10","08:40"],"09":["09:10","09:40"],"10":["10:10","10:40"],"11":["11:10","11:40"],"12":["12:10","12:40"],"13":["13:10","13:40"],"14":["14:10","14:40"],"15":["15:10","15:40"],"16":["16:10","16:40"],"17":["17:10","17:40"],"18":["18:10","18:40"],"19":["19:10","19:40"],"20":["20:10","20:40"]};
-
-/* Miranese Return (same as Piave return - from Venice A5) */
-const MIRANESE_RETURN_WEEKDAY=RETURN_WEEKDAY;
-const MIRANESE_RETURN_SATURDAY=RETURN_SATURDAY;
-const MIRANESE_RETURN_SUNDAY=RETURN_SUNDAY;
+const VEMPA_L7_RETURN_SUNDAY={"00":["00:05","00:40"],"05":["05:15"],"06":["06:10","06:30","06:50"],"07":["07:10","07:40","07:55"],"08":["08:10","08:25","08:40","08:55"],"09":["09:10","09:25","09:40","09:55"],"10":["10:10","10:25","10:40","10:55"],"11":["11:10","11:25","11:40","11:55"],"12":["12:10","12:25","12:40","12:55"],"13":["13:10","13:25","13:40","13:55"],"14":["14:10","14:25","14:40","14:55"],"15":["15:10","15:25","15:40","15:55"],"16":["16:10","16:25","16:40","16:55"],"17":["17:10","17:25","17:40","17:55"],"18":["18:10","18:25","18:40","18:55"],"19":["19:10","19:25","19:40","19:55"],"20":["20:10","20:25"],"21":["21:10","21:35"],"22":["22:05","22:35"],"23":["23:05","23:35"]};
 
 /* ================= RESTAURANTS DATA ================= */
 const RESTAURANTS = [
@@ -1016,7 +1205,7 @@ const SHOPPING = [
 /* ================= UTILITIES ================= */
 function flatten(obj){ return Object.keys(obj).sort().reduce(function(a,h){return a.concat(obj[h]||[])},[]) }
 function minutes(t){ if(!t)return Infinity; var p=(""+t).split(":").map(Number); if(p.length<2||isNaN(p[0])||isNaN(p[1]))return Infinity; return p[0]*60+p[1] }
-function dayType(d){ var x=d.getDay(); return x===0?"sunday":x===6?"saturday":"weekday" }
+function dayType(d){ var x=d.getDay(); return x===0?"sunday":"weekday" }
 function isNight(d){ return d.getHours()<5 }
 
 /* Get schedule tables for a given apartment and direction */
@@ -1395,7 +1584,7 @@ function openScheduleModal(direction) {
   var stopCfg = STOP_CONFIG[apt];
   var hasNight = stopCfg.lines.night !== null;
   var bodyHTML = '<div class="lv-schedule-day-tabs">';
-  ["weekday","saturday","sunday"].forEach(function(dt) {
+  ["weekday","sunday"].forEach(function(dt) {
     var active = dt===currentDt ? " active" : "";
     bodyHTML += '<button class="lv-day-tab' + active + '" onclick="switchScheduleDay(\'' + dt + '\',\'' + direction + '\')" data-day="' + dt + '">' + L[dt] + '</button>';
   });
@@ -1535,6 +1724,13 @@ function showModal() {
   }, 50);
 }
 
+/* Accordion toggle */
+function toggleAccordion(el) {
+  el.classList.toggle('collapsed');
+  var content = el.nextElementSibling;
+  if(content) content.classList.toggle('collapsed');
+}
+
 function closeModal() {
   document.getElementById('lv-modal-overlay').classList.remove('active');
   var scrollY = document.body.dataset.scrollY || '0';
@@ -1551,21 +1747,39 @@ document.getElementById('lv-modal-overlay').addEventListener('click', function(e
   if(e.target === this) closeModal();
 });
 
-// Swipe to close
+// Swipe to close (only from handle/header area)
 (function() {
   var startY = 0;
+  var dragging = false;
   var modal = document.querySelector('.lv-modal');
+  var handle = document.querySelector('.lv-modal-handle');
+  var header = document.querySelector('.lv-modal-header');
   if(!modal) return;
-  modal.addEventListener('touchstart', function(e) { startY = e.changedTouches[0].screenY; }, {passive:true});
-  modal.addEventListener('touchmove', function(e) {
+
+  function onStart(e) { startY = e.changedTouches[0].screenY; dragging = true; }
+  function onMove(e) {
+    if(!dragging) return;
     var diff = e.changedTouches[0].screenY - startY;
-    if(diff > 0 && modal.scrollTop === 0) { e.preventDefault(); modal.style.transform = 'translateY(' + Math.min(diff,100) + 'px)'; }
-  }, {passive:false});
-  modal.addEventListener('touchend', function(e) {
+    if(diff > 0) { e.preventDefault(); modal.style.transform = 'translateY(' + Math.min(diff,120) + 'px)'; }
+  }
+  function onEnd(e) {
+    if(!dragging) return;
+    dragging = false;
     var diff = e.changedTouches[0].screenY - startY;
     modal.style.transform = '';
-    if(diff > 100 && modal.scrollTop === 0) closeModal();
-  }, {passive:true});
+    if(diff > 80) closeModal();
+  }
+
+  if(handle) {
+    handle.addEventListener('touchstart', onStart, {passive:true});
+    handle.addEventListener('touchmove', onMove, {passive:false});
+    handle.addEventListener('touchend', onEnd, {passive:true});
+  }
+  if(header) {
+    header.addEventListener('touchstart', onStart, {passive:true});
+    header.addEventListener('touchmove', onMove, {passive:false});
+    header.addEventListener('touchend', onEnd, {passive:true});
+  }
 })();
 
 // Escape key
