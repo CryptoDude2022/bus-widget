@@ -201,6 +201,7 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-modal-close:hover{background:#f1f5f9;border-color:#94a3b8;color:#333;box-shadow:0 3px 10px rgba(0,0,0,.1)}
 .lv-modal-close:active{transform:scale(.92)}
 .lv-modal-body{padding:16px 18px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;flex:1;min-height:0}
+.lv-modal-body *{touch-action:pan-y}
 .lv-modal-body::-webkit-scrollbar{width:4px}
 .lv-modal-body::-webkit-scrollbar-track{background:transparent}
 .lv-modal-body::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px}
@@ -1759,6 +1760,36 @@ document.getElementById('lv-modal-overlay').addEventListener('click', function(e
 
 // Escape key
 document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeModal(); });
+
+// Fix mobile scroll inside modal body - prevent overlay/modal from stealing touch events
+(function() {
+  var overlay = document.getElementById('lv-modal-overlay');
+  var modalEl = overlay ? overlay.querySelector('.lv-modal') : null;
+
+  // Stop touchmove on overlay itself (prevents background scroll) but allow inside modal body
+  if(overlay) {
+    overlay.addEventListener('touchmove', function(e) {
+      var modalBody = document.getElementById('lv-modal-body');
+      if(modalBody && modalBody.contains(e.target)) {
+        // Allow scroll inside modal body - do NOT prevent default
+        return;
+      }
+      // Block scroll outside modal body (on header, footer, overlay)
+      e.preventDefault();
+    }, {passive: false});
+  }
+
+  // Ensure modal element doesn't block touch propagation to body
+  if(modalEl) {
+    modalEl.addEventListener('touchmove', function(e) {
+      var modalBody = document.getElementById('lv-modal-body');
+      if(modalBody && modalBody.contains(e.target)) {
+        // Let the event pass through for scrolling
+        e.stopPropagation();
+      }
+    }, {passive: true});
+  }
+})();
 
 /* ================= SECTION SWITCHING ================= */
 function switchSection(section) {
