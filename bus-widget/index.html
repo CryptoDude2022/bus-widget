@@ -1749,6 +1749,16 @@ document.getElementById('lv-modal-overlay').addEventListener('click', function(e
 // Escape key
 document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeModal(); });
 
+// Fix modal scrolling inside iframe: prevent parent page from capturing touch events
+(function() {
+  var overlay = document.getElementById('lv-modal-overlay');
+  var mbody = document.getElementById('lv-modal-body');
+  // Block touchmove on overlay so parent page doesn't scroll
+  overlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+  // On modal body: stop propagation to overlay, allow native scroll
+  mbody.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+})();
+
 /* ================= SECTION SWITCHING ================= */
 function switchSection(section) {
   document.querySelectorAll('.lv-panel').forEach(function(p){ p.classList.remove('active') });
