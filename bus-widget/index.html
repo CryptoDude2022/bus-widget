@@ -200,8 +200,8 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;min-width:36px;min-height:36px;border:1.5px solid #e5e7eb;background:#fff;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 6px rgba(0,0,0,.06);z-index:2}
 .lv-modal-close:hover{background:#f1f5f9;border-color:#94a3b8;color:#333;box-shadow:0 3px 10px rgba(0,0,0,.1)}
 .lv-modal-close:active{transform:scale(.92)}
-.lv-modal-body{padding:16px 18px;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;flex:1;min-height:0}
-.lv-modal-body .lv-schedule-table,.lv-modal-body .lv-schedule-table *{pointer-events:none}
+.lv-modal-body{padding:16px 18px;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;flex:1;min-height:0;touch-action:pan-y}
+.lv-modal-body .lv-schedule-table{user-select:none;-webkit-user-select:none}
 .lv-modal-body .lv-day-tab{pointer-events:auto}
 .lv-modal-footer{padding:14px 18px;border-top:1.5px solid #f1f5f9;display:flex;gap:8px;flex-shrink:0}
 .lv-modal-btn{flex:1;padding:13px 14px;border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;border:none;box-shadow:0 2px 6px rgba(0,0,0,.08)}
