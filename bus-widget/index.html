@@ -12,7 +12,7 @@
 /* ================= RESET ================= */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5}
+html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5;height:100%;overscroll-behavior:none}
 
 /* ================= ANIMATIONS ================= */
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
@@ -187,8 +187,8 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-airport-duration{font-size:13px;font-weight:600;color:#475569}
 
 /* ================= MODAL ================= */
-.lv-modal-overlay{position:fixed;inset:0;width:100vw;height:100dvh;background:rgba(0,0,0,.45);z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;padding:0;margin:0}
-.lv-modal-overlay.active{opacity:1;visibility:visible;touch-action:none!important}
+.lv-modal-overlay{position:fixed;inset:0;width:100vw;height:100dvh;background:rgba(0,0,0,.45);z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;padding:0;margin:0;overscroll-behavior:none}
+.lv-modal-overlay.active{opacity:1;visibility:visible}
 .lv-modal{background:#fff;border-radius:16px;width:92vw;max-width:420px;max-height:85dvh;display:flex;flex-direction:column;overflow:hidden;position:relative;box-sizing:border-box;box-shadow:0 12px 48px rgba(0,0,0,.25);opacity:0;transform:none;transition:opacity .2s}
 .lv-modal-overlay.active .lv-modal{opacity:1}
 .lv-modal,.lv-modal *{pointer-events:auto!important}
@@ -1755,12 +1755,15 @@ document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeMod
 // Fix modal scrolling inside iframe: prevent parent page from capturing touch events
 (function() {
   var overlay = document.getElementById('lv-modal-overlay');
+  var modal = overlay.querySelector('.lv-modal');
   var mbody = document.getElementById('lv-modal-body');
-  // Block touchmove on overlay so parent page doesn't scroll
+  // Block touch OUTSIDE the modal only
   overlay.addEventListener('touchmove', function(e) {
-    if(!mbody.contains(e.target)) e.preventDefault();
+    if (!modal.contains(e.target)) {
+      e.preventDefault();
+    }
   }, { passive: false });
-  // On modal body: stop propagation to overlay, allow native scroll
+  // Inside modal body: allow native scroll
   mbody.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
   mbody.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
 })();
