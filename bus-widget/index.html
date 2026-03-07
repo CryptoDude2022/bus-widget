@@ -197,9 +197,12 @@ body.lv-modal-open{position:fixed;width:100%}
 .lv-modal-title-wrap{flex:1}
 .lv-modal-title{font-size:16px;font-weight:700;color:#1f2937;margin-bottom:2px}
 .lv-modal-subtitle{font-size:12px;color:#64748b}
-.lv-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;min-width:36px;min-height:36px;border:1.5px solid #e5e7eb;background:#fff;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 6px rgba(0,0,0,.06);z-index:2}
-.lv-modal-close:hover{background:#f1f5f9;border-color:#94a3b8;color:#333;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.lv-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;min-width:36px;min-height:36px;border:1.5px solid rgba(0,0,0,.15);background:rgba(255,255,255,.7);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#333;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 8px rgba(0,0,0,.1);z-index:10}
+.lv-modal-close:hover{background:rgba(255,255,255,.95);border-color:rgba(0,0,0,.25);box-shadow:0 3px 12px rgba(0,0,0,.15)}
 .lv-modal-close:active{transform:scale(.92)}
+.lv-modal-body-close{display:block;width:100%;padding:14px;margin-top:16px;border-radius:12px;border:1.5px solid #e2e8f0;background:#f8fafc;color:#475569;font-size:14px;font-weight:600;cursor:pointer;text-align:center;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.lv-modal-body-close:hover{background:#e2e8f0;border-color:#cbd5e1}
+.lv-modal-body-close:active{transform:scale(.97)}
 .lv-modal-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding:16px 18px}
 .lv-modal-body .lv-schedule-table{user-select:none;-webkit-user-select:none}
 .lv-modal-body .lv-day-tab{pointer-events:auto}
@@ -1593,7 +1596,9 @@ function openScheduleModal(direction) {
   // If night time, show night tab by default
   if(isNight(now) && hasNight) currentDt = 'night';
 
+  bodyHTML += '<button class="lv-modal-body-close" onclick="closeModal()">Close</button>';
   document.getElementById("lv-modal-body").innerHTML = bodyHTML;
+  document.getElementById("lv-modal-footer").style.display = "none";
   renderScheduleTable(currentDt, direction, nowMin);
   showModal();
 }
@@ -1703,7 +1708,14 @@ function openShoppingModal(idx) {
     body += '</ul></div>';
   });
 
+  body += '<div style="display:flex;gap:8px;margin-top:16px">';
+  body += '<button class="lv-modal-body-close" style="margin-top:0" onclick="closeModal()">' + (L.close || 'Close') + '</button>';
+  var mapsGrad = shop.type==='outlet' ? 'background:linear-gradient(135deg,#f97316,#fb923c);border-color:#f97316' : 'background:linear-gradient(135deg,#8b5cf6,#7c3aed);border-color:#7c3aed';
+  body += '<a href="' + shop.link + '" target="_blank" rel="noopener" class="lv-modal-body-close" style="margin-top:0;' + mapsGrad + ';color:#fff;text-decoration:none">📍 ' + (L.openMaps || 'Open in Maps') + '</a>';
+  body += '</div>';
   document.getElementById("lv-modal-body").innerHTML = body;
+  // Hide footer since Close + Maps are inside the scrollable body
+  document.getElementById("lv-modal-footer").style.display = "none";
   showModal();
 }
 
@@ -1731,6 +1743,9 @@ function showModal() {
     modal.style.width = '100%';
     modal.style.maxWidth = '100%';
     modal.style.borderRadius = '0';
+    // Hide fixed footer — Close button is inside scrollable body
+    var footer = document.getElementById('lv-modal-footer');
+    if (footer) footer.style.display = 'none';
     window.parent.postMessage({ type: 'LV_MODAL_OPEN' }, '*');
   }
 }
@@ -1755,6 +1770,8 @@ function closeModal() {
   overlay.style.height = '';
   overlay.style.padding = '';
   overlay.style.alignItems = '';
+  var footer = document.getElementById('lv-modal-footer');
+  if (footer) footer.style.display = '';
   document.documentElement.classList.remove('lv-modal-open');
   document.body.classList.remove('lv-modal-open');
   document.body.style.top = '';
