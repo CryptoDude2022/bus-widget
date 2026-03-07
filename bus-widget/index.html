@@ -12,7 +12,8 @@
 /* ================= RESET ================= */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5;height:100%;overscroll-behavior:none}
+html,body{margin:0;padding:0;height:100%;overscroll-behavior:none;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5}
+body.lv-modal-open{position:fixed;overflow:hidden;width:100%}
 
 /* ================= ANIMATIONS ================= */
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
@@ -187,14 +188,11 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-airport-duration{font-size:13px;font-weight:600;color:#475569}
 
 /* ================= MODAL ================= */
-.lv-modal-overlay{position:fixed;inset:0;width:100vw;height:100dvh;background:rgba(0,0,0,.45);z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;padding:0;margin:0;overscroll-behavior:none}
+.lv-modal-overlay{position:fixed;inset:0;width:100vw;height:100dvh;background:rgba(0,0,0,.45);z-index:999999;display:flex;align-items:center;justify-content:center;padding:12px;box-sizing:border-box;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
 .lv-modal-overlay.active{opacity:1;visibility:visible}
-.lv-modal{background:#fff;border-radius:16px;width:92vw;max-width:420px;max-height:85dvh;display:flex;flex-direction:column;overflow:hidden;position:relative;box-sizing:border-box;box-shadow:0 12px 48px rgba(0,0,0,.25);opacity:0;transform:none;transition:opacity .2s}
+.lv-modal{background:#fff;border-radius:16px;width:min(420px,92vw);max-height:calc(100dvh - 24px);display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;box-shadow:0 12px 48px rgba(0,0,0,.25);opacity:0;transition:opacity .2s}
 .lv-modal-overlay.active .lv-modal{opacity:1}
-.lv-modal,.lv-modal *{pointer-events:auto!important}
-.lv-modal-header,.lv-modal-body,.lv-modal{transform:none!important}
-.lv-modal-handle{display:none}
-.lv-modal-header{flex:0 0 auto;padding:16px 18px;border-bottom:1.5px solid #f1f5f9;display:flex;align-items:center;gap:12px;position:relative;z-index:2;background:#fff}
+.lv-modal-header{flex:0 0 auto;padding:16px 18px;border-bottom:1px solid #f1f5f9;background:#fff;position:relative;z-index:2;display:flex;align-items:center;gap:12px}
 .lv-modal-icon{font-size:26px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fef2f2,#fde8e8);border-radius:14px;border:1.5px solid rgba(252,165,165,.5)}
 .lv-modal-title-wrap{flex:1}
 .lv-modal-title{font-size:16px;font-weight:700;color:#1f2937;margin-bottom:2px}
@@ -202,11 +200,10 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;min-width:36px;min-height:36px;border:1.5px solid #e5e7eb;background:#fff;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 6px rgba(0,0,0,.06);z-index:2}
 .lv-modal-close:hover{background:#f1f5f9;border-color:#94a3b8;color:#333;box-shadow:0 3px 10px rgba(0,0,0,.1)}
 .lv-modal-close:active{transform:scale(.92)}
-.lv-modal-body{flex:1 1 auto;min-height:0!important;overflow-x:hidden;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain;touch-action:pan-y!important;padding:16px 18px;position:relative;z-index:1;max-height:70dvh!important}
-.lv-modal-body *{touch-action:auto}
+.lv-modal-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:16px 18px}
 .lv-modal-body .lv-schedule-table{user-select:none;-webkit-user-select:none}
 .lv-modal-body .lv-day-tab{pointer-events:auto}
-.lv-modal-footer{flex:0 0 auto;padding:14px 18px;border-top:1.5px solid #f1f5f9;display:flex;gap:8px}
+.lv-modal-footer{flex:0 0 auto;padding:14px 18px;border-top:1px solid #f1f5f9;background:#fff;display:flex;gap:8px}
 .lv-modal-btn{flex:1;padding:13px 14px;border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;border:none;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .lv-modal-btn:active{transform:scale(.97)}
 .lv-modal-btn-secondary{background:#f1f5f9;color:#475569;border:1.5px solid #e2e8f0}
@@ -1712,18 +1709,17 @@ function openShoppingModal(idx) {
 }
 
 /* ================= MODAL MANAGEMENT ================= */
+let lvScrollY = 0;
 function showModal() {
-  var scrollY = window.scrollY || window.pageYOffset || 0;
-  document.body.style.position = 'fixed';
-  document.body.style.top = '-' + scrollY + 'px';
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.overflow = 'hidden';
-  document.body.dataset.scrollY = scrollY;
-  var overlay = document.getElementById('lv-modal-overlay');
-  var mbody = document.getElementById('lv-modal-body');
+  lvScrollY = window.scrollY || window.pageYOffset || 0;
+  document.body.classList.add('lv-modal-open');
+  document.body.style.top = `-${lvScrollY}px`;
+  const overlay = document.getElementById('lv-modal-overlay');
+  const mbody = document.getElementById('lv-modal-body');
   overlay.classList.add('active');
-  setTimeout(function() { if(mbody) mbody.scrollTop = 0; }, 10);
+  requestAnimationFrame(() => {
+    if (mbody) mbody.scrollTop = 0;
+  });
 }
 
 /* Accordion toggle */
@@ -1734,39 +1730,20 @@ function toggleAccordion(el) {
 }
 
 function closeModal() {
-  document.getElementById('lv-modal-overlay').classList.remove('active');
-  var scrollY = document.body.dataset.scrollY || '0';
-  document.body.style.position = '';
+  const overlay = document.getElementById('lv-modal-overlay');
+  overlay.classList.remove('active');
+  document.body.classList.remove('lv-modal-open');
   document.body.style.top = '';
-  document.body.style.left = '';
-  document.body.style.right = '';
-  document.body.style.overflow = '';
-  window.scrollTo(0, parseInt(scrollY));
+  window.scrollTo(0, lvScrollY);
 }
-
-// Close on overlay click
+// click fuori dal modal
 document.getElementById('lv-modal-overlay').addEventListener('click', function(e) {
-  if(e.target === this) closeModal();
+  if (e.target === this) closeModal();
 });
-
-// Escape key
-document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeModal(); });
-
-// Fix modal scrolling inside iframe: prevent parent page from capturing touch events
-(function() {
-  var overlay = document.getElementById('lv-modal-overlay');
-  var modal = overlay.querySelector('.lv-modal');
-  var mbody = document.getElementById('lv-modal-body');
-  // Block touch OUTSIDE the modal only
-  overlay.addEventListener('touchmove', function(e) {
-    if (!modal.contains(e.target)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-  // Inside modal body: allow native scroll
-  mbody.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
-  mbody.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
-})();
+// tasto ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
 
 /* ================= SECTION SWITCHING ================= */
 function switchSection(section) {
