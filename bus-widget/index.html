@@ -14,6 +14,7 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 html,body{margin:0;padding:0;height:100%;overscroll-behavior:none;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5}
 html.lv-modal-open,body.lv-modal-open{overflow:hidden}
+body.lv-modal-open{position:fixed;width:100%}
 
 /* ================= ANIMATIONS ================= */
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
@@ -1709,11 +1710,14 @@ function openShoppingModal(idx) {
 
 /* ================= MODAL MANAGEMENT ================= */
 const lvIsInIframe = window.self !== window.top;
+let lvScrollY = 0;
 function showModal() {
+  lvScrollY = window.scrollY || window.pageYOffset || 0;
   const overlay = document.getElementById('lv-modal-overlay');
   const mbody = document.getElementById('lv-modal-body');
   document.documentElement.classList.add('lv-modal-open');
   document.body.classList.add('lv-modal-open');
+  document.body.style.top = `-${lvScrollY}px`;
   overlay.classList.add('active');
   if (mbody) mbody.scrollTop = 0;
   if (lvIsInIframe) {
@@ -1732,6 +1736,8 @@ function closeModal() {
   document.getElementById('lv-modal-overlay').classList.remove('active');
   document.documentElement.classList.remove('lv-modal-open');
   document.body.classList.remove('lv-modal-open');
+  document.body.style.top = '';
+  window.scrollTo(0, lvScrollY);
   if (lvIsInIframe) {
     window.parent.postMessage({ type: 'LV_MODAL_CLOSE' }, '*');
   }
