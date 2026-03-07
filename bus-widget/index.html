@@ -1748,6 +1748,19 @@ document.getElementById('lv-modal-overlay').addEventListener('click', function(e
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
+// Fix modal scrolling: block touch outside modal, allow native scroll inside
+(function() {
+  var overlay = document.getElementById('lv-modal-overlay');
+  var modal = overlay.querySelector('.lv-modal');
+  var mbody = document.getElementById('lv-modal-body');
+  overlay.addEventListener('touchmove', function(e) {
+    if (!modal.contains(e.target)) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  mbody.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
+  mbody.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+})();
 
 /* ================= SECTION SWITCHING ================= */
 function switchSection(section) {
