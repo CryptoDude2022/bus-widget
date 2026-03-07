@@ -187,12 +187,14 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-airport-duration{font-size:13px;font-weight:600;color:#475569}
 
 /* ================= MODAL ================= */
-.lv-modal-overlay{position:fixed;inset:0;width:100vw;height:100dvh;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:99999;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;padding:0;margin:0;overflow:hidden}
-.lv-modal-overlay.active{opacity:1;visibility:visible}
-.lv-modal{background:#fff;border-radius:16px;width:92vw;max-width:420px;height:85dvh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.25);opacity:0;transform:none;transition:opacity .2s;position:relative}
+.lv-modal-overlay{position:fixed;inset:0;width:100vw;height:100dvh;background:rgba(0,0,0,.45);z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;padding:0;margin:0}
+.lv-modal-overlay.active{opacity:1;visibility:visible;touch-action:none!important}
+.lv-modal{background:#fff;border-radius:16px;width:92vw;max-width:420px;max-height:85dvh;display:flex;flex-direction:column;overflow:hidden;position:relative;box-sizing:border-box;box-shadow:0 12px 48px rgba(0,0,0,.25);opacity:0;transform:none;transition:opacity .2s}
 .lv-modal-overlay.active .lv-modal{opacity:1}
+.lv-modal,.lv-modal *{pointer-events:auto!important}
+.lv-modal-header,.lv-modal-body,.lv-modal{transform:none!important}
 .lv-modal-handle{display:none}
-.lv-modal-header{flex:0 0 auto;padding:16px 18px;border-bottom:1.5px solid #f1f5f9;display:flex;align-items:center;gap:12px}
+.lv-modal-header{flex:0 0 auto;padding:16px 18px;border-bottom:1.5px solid #f1f5f9;display:flex;align-items:center;gap:12px;position:relative;z-index:2;background:#fff}
 .lv-modal-icon{font-size:26px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fef2f2,#fde8e8);border-radius:14px;border:1.5px solid rgba(252,165,165,.5)}
 .lv-modal-title-wrap{flex:1}
 .lv-modal-title{font-size:16px;font-weight:700;color:#1f2937;margin-bottom:2px}
@@ -200,7 +202,8 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
 .lv-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;min-width:36px;min-height:36px;border:1.5px solid #e5e7eb;background:#fff;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 2px 6px rgba(0,0,0,.06);z-index:2}
 .lv-modal-close:hover{background:#f1f5f9;border-color:#94a3b8;color:#333;box-shadow:0 3px 10px rgba(0,0,0,.1)}
 .lv-modal-close:active{transform:scale(.92)}
-.lv-modal-body{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior-y:contain;padding:16px 18px;min-height:0}
+.lv-modal-body{flex:1 1 auto;min-height:0!important;overflow-x:hidden;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain;touch-action:pan-y!important;padding:16px 18px;position:relative;z-index:1;max-height:70dvh!important}
+.lv-modal-body *{touch-action:auto}
 .lv-modal-body .lv-schedule-table{user-select:none;-webkit-user-select:none}
 .lv-modal-body .lv-day-tab{pointer-events:auto}
 .lv-modal-footer{flex:0 0 auto;padding:14px 18px;border-top:1.5px solid #f1f5f9;display:flex;gap:8px}
@@ -295,8 +298,8 @@ html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-syste
   .lv-supermarket-card{padding:12px}
   .lv-supermarket-icon{width:40px;height:40px;font-size:22px}
   .lv-supermarket-name{font-size:13px}
-  .lv-modal-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;padding:0!important;margin:0}
-  .lv-modal{width:92vw;height:85dvh;max-width:420px;border-radius:16px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  .lv-modal-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;padding:0!important;margin:0;touch-action:none!important}
+  .lv-modal{width:92vw;max-width:420px;max-height:85dvh;border-radius:16px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
   .lv-schedule-table{font-size:11px}
   .lv-schedule-table th{padding:6px 4px;font-size:10px}
   .lv-schedule-table td{padding:5px 4px}
@@ -1754,8 +1757,11 @@ document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeMod
   var overlay = document.getElementById('lv-modal-overlay');
   var mbody = document.getElementById('lv-modal-body');
   // Block touchmove on overlay so parent page doesn't scroll
-  overlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+  overlay.addEventListener('touchmove', function(e) {
+    if(!mbody.contains(e.target)) e.preventDefault();
+  }, { passive: false });
   // On modal body: stop propagation to overlay, allow native scroll
+  mbody.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
   mbody.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
 })();
 
