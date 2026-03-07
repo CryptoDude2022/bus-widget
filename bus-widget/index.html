@@ -12,7 +12,7 @@
 /* ================= RESET ================= */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-html,body{margin:0;padding:0;height:100%;overscroll-behavior:none;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5}
+html,body{margin:0;padding:0;background:#f5f7fa;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.5}
 html.lv-modal-open,body.lv-modal-open{overflow:hidden}
 body.lv-modal-open{position:fixed;width:100%}
 
@@ -1714,13 +1714,21 @@ let lvScrollY = 0;
 function showModal() {
   lvScrollY = window.scrollY || window.pageYOffset || 0;
   const overlay = document.getElementById('lv-modal-overlay');
+  const modal = overlay.querySelector('.lv-modal');
   const mbody = document.getElementById('lv-modal-body');
   document.documentElement.classList.add('lv-modal-open');
   document.body.classList.add('lv-modal-open');
   document.body.style.top = `-${lvScrollY}px`;
   overlay.classList.add('active');
   if (mbody) mbody.scrollTop = 0;
-  if (lvIsInIframe) {
+  if (lvIsInIframe && modal) {
+    // In iframe, position:fixed and dvh/vh resolve to iframe height (e.g. 3000px).
+    // Cap modal height and pin overlay to top so it's visible.
+    var realH = screen.height || 800;
+    modal.style.maxHeight = Math.round(realH * 0.85) + 'px';
+    overlay.style.height = realH + 'px';
+    overlay.style.alignItems = 'flex-start';
+    overlay.style.paddingTop = '24px';
     window.parent.postMessage({ type: 'LV_MODAL_OPEN' }, '*');
   }
 }
@@ -1733,7 +1741,13 @@ function toggleAccordion(el) {
 }
 
 function closeModal() {
-  document.getElementById('lv-modal-overlay').classList.remove('active');
+  var overlay = document.getElementById('lv-modal-overlay');
+  var modal = overlay.querySelector('.lv-modal');
+  overlay.classList.remove('active');
+  if (modal) { modal.style.maxHeight = ''; }
+  overlay.style.height = '';
+  overlay.style.alignItems = '';
+  overlay.style.paddingTop = '';
   document.documentElement.classList.remove('lv-modal-open');
   document.body.classList.remove('lv-modal-open');
   document.body.style.top = '';
@@ -1748,18 +1762,16 @@ document.getElementById('lv-modal-overlay').addEventListener('click', function(e
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
-// Fix modal scrolling: block touch outside modal, allow native scroll inside
+// Fix modal scrolling in iframe: block background scroll when modal is open
 (function() {
   var overlay = document.getElementById('lv-modal-overlay');
-  var modal = overlay.querySelector('.lv-modal');
   var mbody = document.getElementById('lv-modal-body');
-  overlay.addEventListener('touchmove', function(e) {
-    if (!modal.contains(e.target)) {
-      e.preventDefault();
-    }
+  // Only preventDefault when modal is active AND touch is outside modal-body
+  document.addEventListener('touchmove', function(e) {
+    if (!overlay.classList.contains('active')) return; // modal closed, don't interfere
+    if (mbody && mbody.contains(e.target)) return; // inside modal body, allow scroll
+    e.preventDefault(); // everywhere else, block
   }, { passive: false });
-  mbody.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
-  mbody.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
 })();
 
 /* ================= SECTION SWITCHING ================= */
